@@ -108,7 +108,7 @@
 &kp Q             &kp W        &kp E         &kp R         &kp T                                                         &kp Y        &kp U    &lt 4 I    &kp O    &kp P
 &hm LEFT_SHIFT A  &kp S        &kp D         &kp F         &kp G        &lt 5 LC(LA(DELETE))                &trans         &kp H        &lt 3 J  &kp K      &kp L    &hm RIGHT_SHIFT MINUS
 &hm LEFT_SHIFT Z  &kp X        &kp C         &kp V         &kp B        &trans                              &trans         &kp N        &kp M    &kp COMMA  &kp DOT  &hm RIGHT_SHIFT SLASH
-&kp LCTRL         &kp LA(TAB)   &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &ime_ctrl LCTRL GRAVE                &kp BACKSPACE  &lt_right 2 ENTER                               &kp ESCAPE
+&kp LCTRL         &kp LG(D)    &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &ime_ctrl LCTRL GRAVE                &kp BACKSPACE  &lt_right 2 ENTER                               &kp ESCAPE
             >;
 
             sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
