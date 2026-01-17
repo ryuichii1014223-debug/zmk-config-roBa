@@ -3,10 +3,10 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-// --- JIS配列用のエイリアス定義（Additive Only） ---
+// --- JIS配列完全対応：記号スキャンコード再定義（Additive Only） ---
 #define JA_AT   LBKT            // @
 #define JA_HAT  EQUAL           // ^
-#define JA_YEN  INT3            // ¥ (International 3)
+#define JA_YEN  INT3            // ¥
 #define JA_DQT  LS(N2)          // "
 #define JA_AMP  LS(N6)          // &
 #define JA_SQT  LS(N7)          // '
@@ -16,11 +16,15 @@
 #define JA_TIL  LS(JA_HAT)      // ~
 #define JA_PIPE LS(INT3)        // |
 #define JA_PLUS LS(SEMICOLON)   // +
-#define JA_AST  LS(COLON)       // *
+#define JA_COLN SQT             // :
+#define JA_AST  LS(SQT)         // *
 #define JA_LBKT RBKT            // [
 #define JA_RBKT NON_US_HASH     // ]
-#define JA_COLN COLON           // :
-#define JA_UNDS INT1            // _ (International 1 / Ro key)
+#define JA_LBRC LS(JA_LBKT)     // {
+#define JA_RBRC LS(JA_RBKT)     // }
+#define JA_UNDS LS(INT1)        // _ (ろキーにShiftを当てることでアンダーバーに固定)
+#define JA_GRV  LS(JA_AT)       // ` (JIS配列ではShift + @ がバッククォート)
+#define JA_SEMI SEMICOLON       // ;
 
 &mt {
     flavor = "balanced";
@@ -28,7 +32,6 @@
 };
 
 &trackball {
-    //automouse-layer = <3>;
     scroll-layers = <4>;
 };
 
@@ -42,6 +45,12 @@
         shift_tab {
             bindings = <&kp LS(TAB)>;
             key-positions = <10 11>;
+        };
+        // O(8) と P(9) の同時押しで Delete
+        combo_delete {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp DELETE>;
         };
     };
 
@@ -99,7 +108,7 @@
 &kp Q             &kp W        &kp E         &kp R         &kp T                                                         &kp Y        &kp U    &lt 4 I    &kp O    &kp P
 &hm LEFT_SHIFT A  &kp S        &kp D         &kp F         &kp G        &lt 5 LC(LA(DELETE))                &trans         &kp H        &lt 3 J  &kp K      &kp L    &hm RIGHT_SHIFT MINUS
 &hm LEFT_SHIFT Z  &kp X        &kp C         &kp V         &kp B        &trans                              &trans         &kp N        &kp M    &kp COMMA  &kp DOT  &hm RIGHT_SHIFT SLASH
-&kp LCTRL         &kp DELETE   &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &ime_ctrl LCTRL GRAVE                &kp BACKSPACE  &lt_right 2 ENTER                               &kp ESCAPE
+&kp LCTRL         &kp LA(TAB)   &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &ime_ctrl LCTRL GRAVE                &kp BACKSPACE  &lt_right 2 ENTER                               &kp ESCAPE
             >;
 
             sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
@@ -108,9 +117,9 @@
         SYMBOL_NUMBER {
             bindings = <
 &kp EXCLAMATION  &kp JA_AT        &kp HASH         &kp JA_AMP       &kp PERCENT                                     &kp JA_PLUS   &kp N7        &kp N8        &kp N9        &kp JA_AST
-&kp JA_COLN      &kp SEMICOLON    &kp JA_LPAR      &kp JA_RPAR      &kp JA_TIL      &trans      &trans          &kp MINUS     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SLASH
+&kp JA_COLN      &kp JA_SEMI      &kp JA_LPAR      &kp JA_RPAR      &kp JA_TIL      &trans      &trans          &kp MINUS     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SLASH
 &kp JA_DQT       &kp JA_SQT       &kp JA_LBKT      &kp JA_RBKT      &kp JA_UNDS     &trans      &trans          &kp N0        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp JA_EQL
-&kp JA_YEN       &kp DOLLAR       &kp LEFT_WIN     &trans           &trans          &trans      &kp LEFT_BRACE  &kp RIGHT_BRACE                                            &kp DELETE
+&kp JA_YEN       &kp DOLLAR       &kp JA_GRV       &kp JA_HAT          &trans          &trans      &kp JA_LBRC     &kp JA_RBRC                                            &kp JA_HAT
             >;
         };
 
