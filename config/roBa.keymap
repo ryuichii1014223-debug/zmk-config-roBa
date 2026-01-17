@@ -58,6 +58,14 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;       // ★ここだけ200にする（Aキーなどは連打可能）
+            flavor = "tap-preferred";   // 文字入力を優先
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     keymap {
@@ -66,9 +74,9 @@
         default_layer {
             bindings = <
 &kp Q             &kp W       &kp E         &kp R         &kp T                                                          &kp Y        &kp U    &lt 4 I    &kp O    &kp P
-&mt LEFT_SHIFT A  &kp S       &kp D         &kp F         &kp G        &lt 5 LC(LA(DELETE))               &trans         &kp H        &lt 3 J  &kp K      &kp L    &mt RIGHT_SHIFT MINUS
-&mt LEFT_SHIFT Z  &kp X       &kp C         &kp V         &kp B        &trans                             &trans         &kp N        &kp M    &kp COMMA  &kp DOT  &mt RIGHT_SHIFT SLASH
-&kp LCTRL         &kp DELETE  &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &mt LCTRL LANG_ZENKAKUHANKAKU      &kp BACKSPACE  &lt 2 ENTER                               &kp ESCAPE
+&hm LEFT_SHIFT A  &kp S       &kp D         &kp F         &kp G        &lt 5 LC(LA(DELETE))               &trans         &kp H        &lt 3 J  &kp K      &kp L    &hm RIGHT_SHIFT MINUS
+&hm LEFT_SHIFT Z  &kp X       &kp C         &kp V         &kp B        &trans                             &trans         &kp N        &kp M    &kp COMMA  &kp DOT  &hm RIGHT_SHIFT SLASH
+&kp LCTRL         &kp DELETE  &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &mt LCTRL LA(GRAVE)                &kp BACKSPACE  &lt 2 ENTER                               &kp ESCAPE
             >;
 
             sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
