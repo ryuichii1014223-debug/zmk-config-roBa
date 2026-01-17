@@ -113,7 +113,7 @@
 &kp EXCLAMATION  &kp JA_AT        &kp HASH         &kp JA_AMP       &kp PERCENT                                     &kp JA_PLUS   &kp N7        &kp N8        &kp N9        &kp JA_AST
 &kp JA_COLN      &kp JA_SEMI      &kp JA_LPAR      &kp JA_RPAR      &kp JA_TIL      &trans      &trans          &kp MINUS     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SLASH
 &kp JA_DQT       &kp JA_SQT       &kp JA_LBKT      &kp JA_RBKT      &kp JA_UNDS     &trans      &trans          &kp N0        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp JA_EQL
-&kp JA_YEN       &kp JA_GRV       &kp LEFT_WIN     &trans           &trans          &trans      &kp JA_LBRC     &kp JA_RBRC                                            &kp DELETE
+&kp JA_YEN       &kp DOLLAR       &kp JA_GRV       &JA_HAT          &trans          &trans      &kp JA_LBRC     &kp JA_RBRC                                            &kp JA_HAT
             >;
         };
 
