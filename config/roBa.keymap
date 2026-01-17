@@ -58,63 +58,62 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
-// 文字入力用（AやZ、/など）: 連打を許可する
+
+        // 文字入力用（AやZ、/など）: 200ms以内の連打でリピートを許可
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            quick-tap-ms = <200>; // 連打OK
+            quick-tap-ms = <200>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
 
-        // レイヤー・エンター用（右親指）: 連打判定を強制的に「殺す」
-        // これにより、同じピンの右矢印を連打しても、Enterが暴発しなくなります
+        // レイヤー・エンター用（右親指）: 連打判定を0にしてEnter誤爆を防止
         lt_right: layer_tap_right_thumb {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            quick-tap-ms = <0>;    // ★ここを0にするのが物理干渉への特効薬です
+            quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&mo>, <&kp>;
         };
-        // US配列のWindowsで確実にIMEを切り替えるための専用ボタン
-        // タップで Alt + Grave (IME切り替え)、ホールドで Ctrl
+
+        // US配列のWindows用IME切り替え: Alt+Graveを確実に送出
         ime_ctrl: ime_toggle_control {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            quick-tap-ms = <0>;        // 連打による誤爆を完全に防止
+            quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
-    };
-    };
+    }; // ここで behaviors を閉じる（余分な括弧を削除しました）
 
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp Q             &kp W       &kp E         &kp R         &kp T                                                          &kp Y        &kp U    &lt 4 I    &kp O    &kp P
-&hm LEFT_SHIFT A  &kp S       &kp D         &kp F         &kp G        &lt 5 LC(LA(DELETE))               &trans         &kp H        &lt 3 J  &kp K      &kp L    &hm RIGHT_SHIFT MINUS
-&hm LEFT_SHIFT Z  &kp X       &kp C         &kp V         &kp B        &trans                             &trans         &kp N        &kp M    &kp COMMA  &kp DOT  &hm RIGHT_SHIFT SLASH
-&kp LCTRL         &kp DELETE  &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &ime_ctrl LCTRL LA(GRAVE)                &kp BACKSPACE  &lt_right 2 ENTER                               &kp ESCAPE
+&kp Q             &kp W        &kp E         &kp R         &kp T                                                         &kp Y        &kp U    &lt 4 I    &kp O    &kp P
+&hm LEFT_SHIFT A  &kp S        &kp D         &kp F         &kp G        &lt 5 LC(LA(DELETE))                &trans         &kp H        &lt 3 J  &kp K      &kp L    &hm RIGHT_SHIFT MINUS
+&hm LEFT_SHIFT Z  &kp X        &kp C         &kp V         &kp B        &trans                              &trans         &kp N        &kp M    &kp COMMA  &kp DOT  &hm RIGHT_SHIFT SLASH
+&kp LCTRL         &kp DELETE   &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &ime_ctrl LCTRL LA(GRAVE)                &kp BACKSPACE  &lt_right 2 ENTER                               &kp ESCAPE
             >;
 
             sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
         };
 
-        SYMBOL+NUMBER {
+        SYMBOL_NUMBER {
             bindings = <
-&kp EXCLAMATION       &kp AT_SIGN       &kp HASH              &kp AMPERSAND          &kp PERCENT                                 &kp PLUS         &kp N7        &kp N8        &kp N9        &kp ASTERISK
+&kp EXCLAMATION       &kp AT_SIGN       &kp HASH              &kp AMPERSAND          &kp PERCENT                                     &kp PLUS         &kp N7        &kp N8        &kp N9        &kp ASTERISK
 &kp COLON             &kp SEMICOLON     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp TILDE       &trans      &trans          &kp MINUS        &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp SLASH
 &kp DOUBLE_QUOTES     &kp SINGLE_QUOTE  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp UNDERSCORE  &trans      &trans          &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL
 &kp NON_US_BACKSLASH  &kp DOLLAR        &kp LEFT_WIN          &trans                 &trans          &trans      &kp LEFT_BRACE  &kp RIGHT_BRACE                                            &kp DELETE
             >;
         };
 
-        ARROW+FUNCTION {
+        ARROW_FUNCTION {
             bindings = <
 &kp TAB         &kp F2   &kp F3   &kp F4        &kp F5                            &kp RC(Z)    &kp RC(PAGE_UP)       &kp UP_ARROW     &kp RC(PAGE_DOWN)      &kp RC(Y)
 &kp LEFT_SHIFT  &kp F6   &kp F7   &kp F8        &kp F9     &trans         &trans  &kp HOME     &kp LEFT_ARROW        &kp DOWN_ARROW   &kp RIGHT_ARROW        &kp END
@@ -128,7 +127,7 @@
 &trans  &trans  &trans  &trans  &trans                                   &trans              &trans    &mkp MB1  &mkp MB2  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans               &trans              &mkp MB1  &mkp MB3  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans               &trans              &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &kp RA(RIGHT_ARROW)  &kp RA(LEFT_ARROW)                                &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &kp RIGHT  &kp LEFT                      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
