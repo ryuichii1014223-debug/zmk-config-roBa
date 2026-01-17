@@ -88,7 +88,7 @@
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
-    }; // ここで behaviors を閉じる（余分な括弧を削除しました）
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -127,7 +127,7 @@
 &trans  &trans  &trans  &trans  &trans                                   &trans              &trans    &mkp MB1  &mkp MB2  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans               &trans              &mkp MB1  &mkp MB3  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans               &trans              &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &kp RIGHT  &kp LEFT                      &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &kp RA(RIGHT_ARROW)  &kp RA(LEFT_ARROW)                      &trans
             >;
 
             sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
