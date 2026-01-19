@@ -127,7 +127,7 @@
             bindings = <
 &kp TAB         &kp F2   &kp F3   &kp F4        &kp F5                            &kp RC(Z)    &kp RC(PAGE_UP)       &kp UP_ARROW     &kp RC(PAGE_DOWN)      &kp RC(Y)
 &kp LEFT_SHIFT  &kp F6   &kp F7   &kp F8        &kp F9     &trans         &trans  &kp HOME     &kp LEFT_ARROW        &kp DOWN_ARROW   &kp RIGHT_ARROW        &kp END
-&kp LEFT_SHIFT  &kp F10  &kp F11  &kp F12       &trans     &trans         &trans  &kp RS(TAB)  &kp RA(LEFT_BRACKET)  &kp RC(RA(TAB))  &kp RA(RIGHT_BRACKET)  &kp TAB
+&kp LEFT_SHIFT  &kp F10  &kp F11  &kp F12       &trans     &trans         &trans  &kp RS(TAB)  &kp RC(JA_LBKT)  &kp RC(RA(TAB))  &kp RC(JA_RBKT)  &kp TAB
 &kp RCTRL       &trans   &trans   &kp LEFT_ALT  &kp SPACE  &kp LCTRL      &trans  &trans                                                                    &trans
             >;
         };
