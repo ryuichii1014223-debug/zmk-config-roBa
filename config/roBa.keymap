@@ -108,7 +108,7 @@
 &kp LA(LSHIFT)          &kp LG(D)    &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 SPACE  &ime_ctrl LCTRL GRAVE                &hm LCTRL BACKSPACE  &lt_right 2 ENTER                               &hm LA(LSHIFT) ESCAPE
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(JA_PLUS) LC(MINUS)>;
+            sensor-bindings = <&inc_dec_kp LC(MINUS) LC(JA_PLUS)>;
         };
 
         SYMBOL_NUMBER {
@@ -137,7 +137,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &kp RA(RIGHT_ARROW)  &kp RA(LEFT_ARROW)                      &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(JA_PLUS) LC(MINUS)>;
+            sensor-bindings = <&inc_dec_kp LC(MINUS) LC(JA_PLUS)>;
         };
 
         SCROLL {
@@ -148,7 +148,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(JA_PLUS) LC(MINUS)>;
+            sensor-bindings = <&inc_dec_kp LC(MINUS) LC(JA_PLUS)>;
         };
 
         bluetooth {
